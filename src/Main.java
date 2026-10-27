@@ -5,17 +5,21 @@ import java.util.Scanner;
 public class Main {
 public static void main (String [] args){
     Scanner scanner = new Scanner(System.in);
-   int score;
-    System.out.println("Inter score : ");
-    score =scanner.nextInt();
+    int n, count =0;
+    System.out.print("inter the number ");
+    n= scanner.nextInt();
+ if (n>0){
+     for(int i=n;i>0;i--){
+         if(i>0){
+             count++;
+         }
+     }
 
-    if (score<0){
-        System.out.print("please inter valid number ");
-    }else if (score> 100){
-        System.out.print("please inter valid number ");
-    }else{
-        System.out.print("this is  valid number  ");
-    }
+ }else{
+     System.out.println("inter valid number ");
+ }
+    System.out.print("the number : " +count);
+
 
 
 
