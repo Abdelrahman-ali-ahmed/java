@@ -40,6 +40,19 @@ public class day3 {
             System.out.println("inter valid number ");
         }
         System.out.print("the number : " +mult);
+        //////////////////////////////
+        int count =0;
+        System.out.print("inter the number ");
+        n= scanner.nextInt();
+        if (n>0){
+            while(n>0){
+                count++;
+                n=n/10;
+            }
+
+        }else{
+            System.out.println("inter valid number ");
+        }
 
     }
 }

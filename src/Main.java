@@ -9,11 +9,10 @@ public static void main (String [] args){
     System.out.print("inter the number ");
     n= scanner.nextInt();
  if (n>0){
-     for(int i=n;i>0;i--){
-         if(i>0){
-             count++;
-         }
-     }
+    while(n>0){
+        count++;
+        n=n/10;
+    }
 
  }else{
      System.out.println("inter valid number ");
