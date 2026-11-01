@@ -7,13 +7,32 @@ import java.util.Scanner;
 public class Main {
 public static void main (String [] args){
     Scanner scanner = new Scanner(System.in);
-    int n ,max,min;
-    int[] arr, MaMi;
-    String s ;
-    s=new String("");
-    System.out.print(palindrom(s,scanner));
-    arr=new int[10];
-    MaMi =new int[2];
+//    day7 day=new day7();
+    day8 day=new day8(scanner);
+    day.displayInfo();
+//    day7.convertTempDay1(scanner);
+//    day7.rectangleDay1(scanner);
+//    System.out.println(day7.gradeCategoryDay2(scanner));
+//    day7.leapYearDay2(scanner);
+//    day7.factorialDay3(scanner);
+//    day7.sumDay3(scanner);
+//    day7.Reverse1Day5(scanner);
+//    day7.Reverse2Day5(scanner);
+//    day7.vowelsDay5(scanner);
+//    day7.palindromeDay5(scanner);
+//    day7.frequentDay5(scanner);
+
+
+
+
+
+//    int n ,max,min;
+//    int[] arr, MaMi;
+//    String s ;
+//    s=new String("");
+//    System.out.print(palindrom(s,scanner));
+//    arr=new int[10];
+//    MaMi =new int[2];
 //   MaMi= maxMin(arr,scanner);
 
 //   System.out.println(MaMi[0]);
