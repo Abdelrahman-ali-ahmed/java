@@ -7,9 +7,10 @@ import java.util.Scanner;
 public class Main {
 public static void main (String [] args){
     Scanner scanner = new Scanner(System.in);
+    double mount =0 ;
 //    day7 day=new day7();
-    day8 day=new day8(scanner);
-    day.displayInfo();
+//    day8 day=new day8(scanner);
+//    day.displayInfo();
 //    day7.convertTempDay1(scanner);
 //    day7.rectangleDay1(scanner);
 //    System.out.println(day7.gradeCategoryDay2(scanner));
@@ -21,7 +22,17 @@ public static void main (String [] args){
 //    day7.vowelsDay5(scanner);
 //    day7.palindromeDay5(scanner);
 //    day7.frequentDay5(scanner);
+//    day9 day=new day9();
+//    day.deposit(mount);
+//    day.getBalance();
+//    day.withdraw(mount);
+//    day.getBalance();
+//    day10 day=new day10(scanner);
 
+//    Developer developer=new Developer(scanner);
+//    developer.displayInfo();
+    Manager man=new Manager(scanner);
+    man.displayInfo();
 
 
 
