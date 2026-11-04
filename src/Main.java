@@ -31,8 +31,9 @@ public static void main (String [] args){
 
 //    Developer developer=new Developer(scanner);
 //    developer.displayInfo();
-    Manager man=new Manager(scanner);
-    man.displayInfo();
+//    Manager man=new Manager(scanner);
+//    man.displayInfo();
+    day11 day11=new day11(scanner);
 
 
 
