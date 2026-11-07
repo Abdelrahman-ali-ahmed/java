@@ -33,9 +33,21 @@ public static void main (String [] args){
 //    developer.displayInfo();
 //    Manager man=new Manager(scanner);
 //    man.displayInfo();
-    day11 day11=new day11(scanner);
-
-
+//    day12 pay1=new day12();
+//    PayPalPayment pay2=new PayPalPayment();
+//    CashPayment pay3=new CashPayment();
+//
+//pay1.pay(11.7);
+//pay2.pay(12.7);
+//pay3.pay(13.7);
+    day13 day=new day13();
+    for(int i=0;i<5;i++){
+        day.addContact(scanner);
+    }
+    day.displayContact();
+    day.SearchByName(scanner);
+    day.deleteContact(scanner);
+    day.displayContact();
 
 
 //    int n ,max,min;
