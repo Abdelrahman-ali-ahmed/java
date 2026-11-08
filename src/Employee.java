@@ -64,6 +64,12 @@ while(true){
     public int getId() {return id;}
     public String getName(){return name;}
     public double getSalary(){return salary;}
+    public void setName(Scanner s){
+        this.name=validEmployeeName(s);
+    }
+    public void setSalary(Scanner s){
+        this.salary=validEmployeeSalary(s);
+    }
 
 
 
