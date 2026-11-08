@@ -1,171 +1,161 @@
-import java.sql.Statement;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-public static void main (String [] args){
-    Scanner scanner = new Scanner(System.in);
-    double mount =0 ;
-//    day7 day=new day7();
-//    day8 day=new day8(scanner);
-//    day.displayInfo();
-//    day7.convertTempDay1(scanner);
-//    day7.rectangleDay1(scanner);
-//    System.out.println(day7.gradeCategoryDay2(scanner));
-//    day7.leapYearDay2(scanner);
-//    day7.factorialDay3(scanner);
-//    day7.sumDay3(scanner);
-//    day7.Reverse1Day5(scanner);
-//    day7.Reverse2Day5(scanner);
-//    day7.vowelsDay5(scanner);
-//    day7.palindromeDay5(scanner);
-//    day7.frequentDay5(scanner);
-//    day9 day=new day9();
-//    day.deposit(mount);
-//    day.getBalance();
-//    day.withdraw(mount);
-//    day.getBalance();
-//    day10 day=new day10(scanner);
+    public static void main(String[] args) {
 
-//    Developer developer=new Developer(scanner);
-//    developer.displayInfo();
-//    Manager man=new Manager(scanner);
-//    man.displayInfo();
-//    day12 pay1=new day12();
-//    PayPalPayment pay2=new PayPalPayment();
-//    CashPayment pay3=new CashPayment();
-//
-//pay1.pay(11.7);
-//pay2.pay(12.7);
-//pay3.pay(13.7);
-    day13 day=new day13();
-    for(int i=0;i<5;i++){
-        day.addContact(scanner);
-    }
-    day.displayContact();
-    day.SearchByName(scanner);
-    day.deleteContact(scanner);
-    day.displayContact();
+        Scanner scanner = new Scanner(System.in);
 
+        ArrayList<Employee> company = new ArrayList<>();
 
-//    int n ,max,min;
-//    int[] arr, MaMi;
-//    String s ;
-//    s=new String("");
-//    System.out.print(palindrom(s,scanner));
-//    arr=new int[10];
-//    MaMi =new int[2];
-//   MaMi= maxMin(arr,scanner);
+        int numberCase;
+        int numberCase2;
 
-//   System.out.println(MaMi[0]);
-//    System.out.println(MaMi[1]);
-//    System.out.println(Average(arr,scanner));
+        do {
+            System.out.println("\n===== Employee Management =====");
+            System.out.println("1: Add Employee");
+            System.out.println("2: Display All Employees");
+            System.out.println("3: Delete Employee");
+            System.out.println("4: Search Employee");
+            System.out.println("5: Exit");
 
+            System.out.print("Enter your choice: ");
+            numberCase = scanner.nextInt();
 
+            switch (numberCase) {
 
+                // ADD EMPLOYEE
+                case 1:
 
+                    System.out.println("1: Developer");
+                    System.out.println("2: Manager");
 
+                    numberCase2 = scanner.nextInt();
 
-}
+                    while (numberCase2 > 2 || numberCase2 <= 0) {
+                        System.out.println("Enter a valid choice:");
+                        numberCase2 = scanner.nextInt();
+                    }
 
+                    Employee e = null;
 
+                    if (numberCase2 == 1) {
+                        e = new DeveloperDay14(scanner);
+                    } else {
+                        e = new ManagerDay14(scanner);
+                    }
 
+                    boolean duplicate = false;
 
-    static int [] maxMin(int []arr,Scanner scanner ){
-        int n ,max,min;
-        int [] MaMi;
-        MaMi=new  int [2];
-        for(int i=0;i<arr.length;i++){
-            System.out.print("inter the number " +(i+1)+ " :");
-            arr[i]=scanner.nextInt();
-        }
-        max=arr[0];
-        min=arr[0];
-        for (int i=0;i<arr.length;i++){
-            if(max<arr[i]){
-                max=arr[i];
+                    for (Employee worker : company) {
+                        if (worker.getId() == e.getId()) {
+                            duplicate = true;
+                            break;
+                        }
+                    }
+
+                    if (!duplicate) {
+                        company.add(e);
+                        System.out.println("Employee added successfully!");
+                    } else {
+                        System.out.println("This employee ID already exists!");
+                    }
+
+                    break;
+
+                // DISPLAY ALL EMPLOYEES
+                case 2:
+
+                    if (company.isEmpty()) {
+                        System.out.println("No employees available!");
+                        break;
+                    }
+
+                    for (Employee worker : company) {
+                        worker.displayInfo();
+                        System.out.println("----------------");
+                    }
+
+                    break;
+
+                // DELETE EMPLOYEE
+                case 3:
+
+                    if (company.isEmpty()) {
+                        System.out.println("No employees available!");
+                        break;
+                    }
+
+                    System.out.print("Enter employee ID to delete: ");
+                    numberCase2 = scanner.nextInt();
+
+                    boolean deleted = false;
+
+                    Iterator<Employee> iterator = company.iterator();
+
+                    while (iterator.hasNext()) {
+
+                        Employee worker = iterator.next();
+
+                        if (worker.getId() == numberCase2) {
+                            iterator.remove();
+                            deleted = true;
+                            System.out.println("Employee deleted successfully!");
+                            break;
+                        }
+                    }
+
+                    if (!deleted) {
+                        System.out.println("Employee not found!");
+                    }
+
+                    break;
+
+                // SEARCH EMPLOYEE
+                case 4:
+
+                    if (company.isEmpty()) {
+                        System.out.println("No employees available!");
+                        break;
+                    }
+
+                    System.out.print("Enter the ID of employee: ");
+                    numberCase2 = scanner.nextInt();
+
+                    while (numberCase2 <= 0) {
+                        System.out.print("Enter a valid ID: ");
+                        numberCase2 = scanner.nextInt();
+                    }
+
+                    boolean found = false;
+
+                    for (Employee worker : company) {
+
+                        if (worker.getId() == numberCase2) {
+                            worker.displayInfo();
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (!found) {
+                        System.out.println("Employee not found!");
+                    }
+
+                    break;
+
+                // EXIT
+                case 5:
+                    System.out.println("Goodbye!");
+                    break;
+
+                default:
+                    System.out.println("Invalid menu choice!");
             }
-            if(min>arr[i]){
-                min=arr[i];
-            }
 
-        }
-        MaMi[0]=max;
-        MaMi[1]=min;
-        return MaMi;
+        } while (numberCase != 5);
+
+        scanner.close();
     }
-    static int  Average(int []arr,Scanner scanner ){
-        int average ,sum ;
-        sum=0;
-        for(int i=0;i<arr.length;i++){
-            System.out.print("inter the number " +(i+1)+ " :");
-           arr[i]=scanner.nextInt();
-        }
-        for(int i=0;i<arr.length;i++){
-
-         sum += arr[i] ;
-        }
-        average=sum/ arr.length;
-
-return average;}
-    static String rever(String s, Scanner scanner){
-    System.out.print("inter the string ");
-    s=scanner.nextLine();
-    String res="";
-    for(int i=s.length()-1;i>=0;i--){
-        res+=s.charAt(i);
-    }
-    return res;
-    }
-    static  int  vowels(String s, Scanner scanner){
-        System.out.print("inter the string ");
-        s=scanner.nextLine();
-        int count =0;
-        String vol="aeiou";
-        s = s.toLowerCase();
-
-        for (int i = 0; i < s.length(); i++) {
-            if (vol.contains("" + s.charAt(i))) {
-                count++;
-            }
-        }
-return count;
-    }
-    static boolean palindrom(String s, Scanner scanner) {
-        System.out.print("inter the string ");
-        s=scanner.nextLine();
-        String res="";
-        for(int i=s.length()-1;i>=0;i--){
-            res+=s.charAt(i);
-        }
-      System.out.println(s);
-        System.out.println(res);
-
-        return s.equalsIgnoreCase(res);
-    }
-    static HashMap<Character, Integer> frequent(String s, Scanner scanner) {
-        System.out.print("Enter the string: ");
-
-        HashMap<Character, Integer> hash = new HashMap<>();
-
-        s = scanner.nextLine();
-
-        for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-
-            if (hash.containsKey(ch)) {
-                hash.put(ch, hash.get(ch) + 1);
-            } else {
-                hash.put(ch, 1);
-            }
-        }
-
-        return hash;
-    }
-
-
-
-
 }
