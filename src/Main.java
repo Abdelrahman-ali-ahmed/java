@@ -177,4 +177,19 @@ public class Main {
             }
         }
     }
+    public  void wordCount(Scanner s){
+        String sentence;
+        System.out.println("inter sentence");
+        sentence=s.nextLine();
+        ArrayList<Character> wordArr=null;
+        ArrayList<String> WordsArr=null;
+        for(int i=0;i<=sentence.length();i++){
+            if(sentence[i] ==" "){
+                wordsArr.add(Arrays.toString(wordArr));
+            }
+
+        }
+
+
+    }
 }
