@@ -4,10 +4,24 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-
-        wordCount(scanner);
-
-
+        int num =StrToNum("213")+1;
+ System.out.println(num); ;
+//        wordCount(scanner);
+//ArrayList<Integer> arr1= new ArrayList<>();
+//        arr1.add(100);
+//        arr1.add(200);
+//        arr1.add(300);
+//ArrayList<String> arr2= new ArrayList<>();
+//        arr2.add(100+"");
+//        arr2.add(200+"");
+//        arr2.add(300+"");
+//        String [] arr3 ={"101","200","300"};
+//display(arr1);
+//System.out.println("------------------------------------");
+//display(arr2);
+//        System.out.println(displayFirst(arr1.toArray()) );
+//        System.out.println(displayFirst(arr2.toArray()));;
+//        System.out.println( displayFirst(arr3));;
         scanner.close();
     }
 
@@ -64,13 +78,11 @@ if (sentence.substring(stopPoint,i).trim().isEmpty()){
         displayinfo(WordsArr);
 
     }
-
     static void displayinfo(ArrayList<String> WordsArr){
         for(String word :WordsArr){
             System.out.println(word.replace(' ','*'));
         }
     }
-
     static void wordCount(Scanner s) {
 
         System.out.println("Enter sentence:");
@@ -97,4 +109,29 @@ if (sentence.substring(stopPoint,i).trim().isEmpty()){
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
     }
+    public static <T> void display(ArrayList<T> arr){
+        for(T one: arr){
+            System.out.println(one);
+        }
+    }
+    public static <T> T displayFirst (T[] arr){
+        return arr[0];
+    }
+    public static int StrToNum (String st){
+       st= st.replaceAll("\\s+", "");
+        int number=0,holder,digit =0;
+        for(int i=st.length()-1;i>=0;i--){
+
+              holder= st.charAt(i)-'0';
+              number+= holder * Math.pow(10,digit);
+              digit++;
+              System.out.println(number);
+                System.out.println("-------------------");
+
+        }
+        return number;
+
+    }
+
+
 }
