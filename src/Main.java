@@ -31,7 +31,7 @@ public class Main {
             }
         }
     }
-    static   void wordCount(Scanner s){
+    static   void wordCount2(Scanner s){
         String sentence;
         int stopPoint=0;
         System.out.println("inter sentence");
@@ -68,6 +68,33 @@ if (sentence.substring(stopPoint,i).trim().isEmpty()){
     static void displayinfo(ArrayList<String> WordsArr){
         for(String word :WordsArr){
             System.out.println(word.replace(' ','*'));
+        }
+    }
+
+    static void wordCount(Scanner s) {
+
+        System.out.println("Enter sentence:");
+        String sentence = s.nextLine().trim().toLowerCase();
+
+        HashMap<String, Integer> map = new HashMap<>();
+
+        if (sentence.isEmpty()) {
+            System.out.println("No words entered!");
+            return;
+        }
+
+        String[] words = sentence.split("\\s+");
+
+        for (String word : words) {
+            if (map.containsKey(word)) {
+                map.put(word, map.get(word) + 1);
+            } else {
+                map.put(word, 1);
+            }
+        }
+
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
         }
     }
 }
