@@ -1,3 +1,5 @@
+import com.sun.source.tree.WhileLoopTree;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,7 +29,8 @@ public class Main {
             System.out.println("8: average salary " );
             System.out.println("9: write employee in file ");
             System.out.println("10: read employee from  file ");
-            System.out.println("11: Exit");
+            System.out.println("11:number of line in file amd number of employee in file  ");
+            System.out.println("12: Exit");
 
             System.out.print("Enter your choice: ");
             numberCase = scanner.nextInt();
@@ -173,6 +176,9 @@ public class Main {
                     readEmployeeData(company,path);
                     break;
                 case 11:
+                    countNumberOfEmployeeAndFile(company,path);
+                    break;
+                case 12:
                     System.out.println("Goodbye!");
                     break;
 
@@ -236,7 +242,6 @@ static String validPath(Scanner s) {
             System.out.println(e.getMessage());
         }
     }
-
     static void readEmployeeData(ArrayList<Employee> c, String path) {
         File file = new File(path);
         Employee e = null;
@@ -301,6 +306,64 @@ static String validPath(Scanner s) {
         } catch (NumberFormatException er) {
             System.out.println("Invalid employee data: " + er.getMessage());
         }
+    }
+    static void countNumberOfEmployeeAndFile(ArrayList<Employee> c, String path){
+        File file=new File(path);
+        Employee e=null;
+        int empNum=0,lines=0;
+        try{
+            if (file.exists() && file.isFile()){
+                try (Scanner scanner=new Scanner(file)){
+                    while (scanner.hasNextLine()){
+                        String line=scanner.nextLine();
+                        lines++;
+                        char  state=line.toString().charAt(0);
+                        switch (state) {
+
+                            case 'I':
+                                e = new Employee();
+                                empNum++;
+                                int id = Integer.parseInt(
+                                        line.replace("ID: ", "")
+                                );
+                                e.setId(id);
+                                break;
+
+                            case 'N':
+                                e.setName(line.replace("Name: ", ""));
+                                break;
+
+                            case 'S':
+                                e.setSalary(Double.parseDouble(
+                                        line.replace("Salary: ", "")
+                                ));
+                                break;
+
+                            case '-':
+                                if (e != null) {
+                                    c.add(e);
+                                    e = null;
+                                }
+                                break;
+                        }
+
+
+                    }
+                }catch (NumberFormatException nu){
+                    System.out.println(nu.getMessage());
+                }
+
+
+            }else {
+                throw new IOException("file not exist ");
+            }
+
+
+        }catch (IOException er){
+            System.out.println(er.getMessage());
+        }
+        System.out.println("number of lines :" +lines);
+        System.out.println("number of Employee : "+ empNum);
     }
 
 
