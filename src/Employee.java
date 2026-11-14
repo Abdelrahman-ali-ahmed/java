@@ -56,12 +56,16 @@ while(true){
         salary=validEmployeeSalary(scanner);
 
     }
+    Employee (){}
     public void displayInfo(){
         System.out.println("ID: "+id);
         System.out.println("salary: "+salary);
         System.out.println("name: "+name);
     }
     public int getId() {return id;}
+    public void setId(int id) {this.id=id;}
+    public void setName(String name) {this.name=name;}
+    public void setSalary(double salary) {this.salary=salary;}
     public String getName(){return name;}
     public double getSalary(){return salary;}
     public void setName(Scanner s){
