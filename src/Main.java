@@ -10,8 +10,9 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-int [] arr={9,7,3,2,5,6};
-        findSeconed(arr);
+//    int [] arr={9,7,3,2,5,6};
+//        findSeconed(arr);
+        Checkanagrams(scanner);
 
 
         scanner.close();
@@ -57,12 +58,40 @@ int [] arr={9,7,3,2,5,6};
     static void  Checkanagrams(Scanner s){
         String str1,str2;
         System.out.println("inter first string 1 ");
-        str1=s.nextLine();
+        str1=s.nextLine().toLowerCase();
         System.out.println("inter first string 2 ");
+        str2=s.nextLine().toLowerCase();
+        HashMap<Character,Integer>strMap1=new HashMap<>();
+        HashMap<Character,Integer>strMap2=new HashMap<>();
+        if(str1.trim().length()!=str2.trim().length()){
+            System.out.println("there are not angrams");
+            return;
+        }
+        strMap1=charcterFrequent(str1);
+        strMap2=charcterFrequent(str2);
+
+        System.out.println(strMap1.equals(strMap2)?"there are  angrams":"there are not angrams");
+
+
 
     }
 
+    public static HashMap<Character,Integer> charcterFrequent(String st ){
+        HashMap<Character,Integer>strMap=new HashMap<>();
+        for(int i=0;i<st.length();i++){
+            if(st.charAt(i)!=' '){
+                if(strMap.containsKey(st.charAt(i))){
+                    strMap.put(st.charAt(i),strMap.get(st.charAt(i))+1);
+                }else{
+                    strMap.put(st.charAt(i),1);
+                }
+            }else{
+                continue;
+            }
 
+        }
+     return strMap;
+    }
 
 
 
