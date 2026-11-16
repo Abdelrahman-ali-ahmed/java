@@ -1,8 +1,3 @@
-import com.sun.source.tree.WhileLoopTree;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -10,10 +5,12 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-//    int [] arr={9,7,3,2,5,6};
+  int [] arr={2, 3, 4, 5, 7, 8};
 //        findSeconed(arr);
-        Checkanagrams(scanner);
-
+//        Checkanagrams(scanner);
+//        dublicatedInArray(arr);
+//checkPalindrome("madam");
+        missingNumber(arr);
 
         scanner.close();
     }
@@ -29,6 +26,13 @@ public class Main {
 //        System.out.println("your reverse string is : "+ sb);
         System.out.println("your reverse string is : "+ rev);
 
+    }
+    static String reverseString (String st){
+        String rev="";
+        for(int i=st.length()-1;i>=0;i--){
+            rev+=st.charAt(i);
+        }
+        return rev;
     }
     static void Checknumber (Scanner s){
         int num;
@@ -75,7 +79,6 @@ public class Main {
 
 
     }
-
     public static HashMap<Character,Integer> charcterFrequent(String st ){
         HashMap<Character,Integer>strMap=new HashMap<>();
         for(int i=0;i<st.length();i++){
@@ -92,7 +95,38 @@ public class Main {
         }
      return strMap;
     }
+    public  static <T>  void dublicatedInArray(T[] arr){
+        HashMap<T,Integer>map=new HashMap<>();
+        for (T element:arr){
+            if(map.containsKey(element)){
+                map.put(element,map.get(element)+1);
+            }else{
+                map.put(element,1);
+            }
+        }
+        for (Map.Entry<T, Integer> entry : map.entrySet()) {
+            if (entry.getValue() >1 ) {
+                System.out.println(entry.getKey());
+            }
+        }
 
+    }
+    public  static void checkPalindrome(String st){
+        String rev=reverseString(st);
+        System.out.println(rev.equals(st)?"this word is palindrome.":"this word is not palindrome.");
+    }
+   public  static void missingNumber(int [] arr ){
+        Integer[]diff =new Integer[arr.length-1];
+        int n,l;
+
+        for(int i=0;i<diff.length;i++){
+            diff[i]=arr[i+1]-arr[i];
+        }
+        for (int d:diff){
+            System.out.println(d);
+        }
+
+ }
 
 
 }
